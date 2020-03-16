@@ -66,7 +66,7 @@ function menuCreator(array) {
     // Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
     // //--------------------------------
     //     var tl = gsap.timeline();
-    //     menuButton.addEventListener('click', (event) => {
+    // menuButton.addEventListener('click', (event) => {
     //         menu.classList.toggle('menu--open');
     //         //--------------------------------
     //         // var tl = gsap.timeline();
@@ -91,21 +91,19 @@ function menuCreator(array) {
 
 
     document.addEventListener('click', (event) => {
-        //console.log("event target", event.target);
-        tl = gsap.timeline();
+
         if (event.target === menuButton) {
             menu.classList.toggle('menu--open');
             menu.style.transform = 'translateX(-350px)';
-            tl.to(menu, { x: 0, scale: 1, opacity: 0.9, duration: 3 });
+            tl.to(menu, { x: 0, scale: 1, opacity: 0.9, duration: 2 });
 
 
         } else {
             menu.style.transform = 'translateX(350px)';
-            tl.to(menu, { x: -350, scale: 1, opacity: 0.9, duration: 3 });
-            //menu.classList.remove('menu--open');
+            tl.to(menu, { x: -350, scale: 1, opacity: 0.9, duration: 2 });
 
         }
-        //menu.classList.remove('menu--open');
+
     })
 
     //Step 5: return the menu component.
