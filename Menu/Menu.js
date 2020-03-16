@@ -56,6 +56,7 @@ function menuCreator(array) {
     array.forEach(element => {
         const menuItem = document.createElement('li');
         menuItem.textContent = element;
+        menuItem.style.cursor = "pointer";
         ul.appendChild(menuItem);
     });
 
@@ -63,9 +64,48 @@ function menuCreator(array) {
     const menuButton = document.querySelector('.menu-button');
 
     // Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
+    // //--------------------------------
+    //     var tl = gsap.timeline();
+    //     menuButton.addEventListener('click', (event) => {
+    //         menu.classList.toggle('menu--open');
+    //         //--------------------------------
+    //         // var tl = gsap.timeline();
+    //         menu.style.width = "350px";
+    //         menu.style.transform = 'translateX(-350px)';
+    //         // menu.style.transition = ' transform 0.5s ease-in-out';
+    //         tl.to(menu, { x: 0, scale: 1, opacity: 0.9, duration: 3 })
+    //             //----------------------------------
+    //     })
+    // //--------------------------------
 
-    menuButton.addEventListener('click', (event) => {
-        menu.classList.toggle('menu--open');
+    //--------------------------------
+    var tl = gsap.timeline();
+    // menuButton.addEventListener('click', (event) => {
+    //     console.log('button click is *** ', event.target);
+    //     console.log('button *** ', menuButton);
+    //     menu.classList.toggle('menu--open');
+    //     menu.style.transform = 'translateX(-350px)';
+    //     // menu.style.transition = ' transform 0.5s ease-in-out';
+    //     tl.to(menu, { x: 0, scale: 1, opacity: 0.9, duration: 3 })
+    // })
+
+
+    document.addEventListener('click', (event) => {
+        //console.log("event target", event.target);
+        tl = gsap.timeline();
+        if (event.target === menuButton) {
+            menu.classList.toggle('menu--open');
+            menu.style.transform = 'translateX(-350px)';
+            tl.to(menu, { x: 0, scale: 1, opacity: 0.9, duration: 3 });
+
+
+        } else {
+            menu.style.transform = 'translateX(350px)';
+            tl.to(menu, { x: -350, scale: 1, opacity: 0.9, duration: 3 });
+            //menu.classList.remove('menu--open');
+
+        }
+        //menu.classList.remove('menu--open');
     })
 
     //Step 5: return the menu component.
