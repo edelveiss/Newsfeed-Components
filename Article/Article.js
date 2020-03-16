@@ -161,9 +161,10 @@ function articleCreator(data) {
     closeButton.style.position = "absolute";
     closeButton.style.bottom = "0";
     closeButton.style.left = "50%";
-    closeButton.style.fontSize = "12px";
-    //closeButton.style.color = "grey";
-    closeButton.style.color = "green";
+    closeButton.style.fontSize = "14px";
+
+    closeButton.style.color = "grey";
+    closeButton.style.transition = "all 650ms";
     closeButton.style.cursor = "pointer";
     closeButton.style.transform = "translate(-50%)";
     closeButton.style.backgroundColor = "white";
@@ -172,19 +173,28 @@ function articleCreator(data) {
     const expandButton = document.createElement('span');
     expandButton.classList.add('expandButton');
     expandButton.textContent = '\u25bc';
+    expandButton.style.fontSize = "14px";
+    expandButton.style.transition = "all 650ms";
     buttonPanel.appendChild(expandButton);
 
+
+    buttonPanel.addEventListener('mouseover', (e) => {
+        e.target.style.fontSize = "20px";
+        e.target.style.color = "red";
+    })
+    buttonPanel.addEventListener('mouseleave', (e) => {
+        closeButton.style.fontSize = "14px";
+        closeButton.style.color = "grey";
+        expandButton.style.fontSize = "14px";
+        expandButton.style.color = "grey";
+    })
+
+
     buttonPanel.addEventListener('click', (event) => {
-            expandButton.classList.toggle('hide-btn');
-            closeButton.classList.toggle('hide-btn');
-            article.classList.toggle('article-open');
-        })
-        // expandButton.addEventListener('click', (event) => {
-        //     article.classList.toggle('article-open');
-        // })
-
-
-
+        expandButton.classList.toggle('hide-btn');
+        closeButton.classList.toggle('hide-btn');
+        article.classList.toggle('article-open');
+    })
 
 
     return article;
