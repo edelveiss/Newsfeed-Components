@@ -156,18 +156,11 @@ function articleCreator(data) {
     // buttonPanel.appendChild(expandButton);
 
     const closeButton = document.createElement('span');
-    closeButton.classList.add('closeButton', 'hide-btn');
+    closeButton.classList.add('closeButton', 'expandButton', 'hide-btn');
     closeButton.textContent = '\u25b2';
-    closeButton.style.position = "absolute";
-    closeButton.style.bottom = "0";
-    closeButton.style.left = "50%";
-    closeButton.style.fontSize = "14px";
-
-    closeButton.style.color = "grey";
     closeButton.style.transition = "all 650ms";
-    closeButton.style.cursor = "pointer";
     closeButton.style.transform = "translate(-50%)";
-    closeButton.style.backgroundColor = "white";
+    closeButton.style.fontSize = "14px";
     buttonPanel.appendChild(closeButton);
 
     const expandButton = document.createElement('span');
