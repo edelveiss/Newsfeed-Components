@@ -210,6 +210,9 @@ function articleCreator(data) {
 }
 
 const articles = document.querySelector('.articles');
-const mappedArticles = data.map(elData => {
-    articles.appendChild(articleCreator(elData));
+// const mappedArticles = data.map(elData => {
+//     articles.appendChild(articleCreator(elData));
+// })
+data.forEach(item => {
+    articles.appendChild(articleCreator(item));
 })
