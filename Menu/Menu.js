@@ -81,8 +81,7 @@ function menuCreator(array) {
     //--------------------------------
     var tl = gsap.timeline();
     // menuButton.addEventListener('click', (event) => {
-    //     console.log('button click is *** ', event.target);
-    //     console.log('button *** ', menuButton);
+
     //     menu.classList.toggle('menu--open');
     //     menu.style.transform = 'translateX(-350px)';
     //     // menu.style.transition = ' transform 0.5s ease-in-out';
@@ -94,9 +93,10 @@ function menuCreator(array) {
 
         if (event.target === menuButton) {
             menu.classList.toggle('menu--open');
-            menu.style.transform = 'translateX(-350px)';
-            tl.to(menu, { x: 0, scale: 1, opacity: 0.9, duration: 2 });
-
+            if (menu.classList.contains("menu--open")) {
+                menu.style.transform = 'translateX(-350px)';
+                tl.to(menu, { x: 0, scale: 1, opacity: 0.9, duration: 2 });
+            }
 
         } else {
             menu.style.transform = 'translateX(350px)';

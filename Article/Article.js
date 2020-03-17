@@ -127,10 +127,6 @@ function articleCreator(data) {
     article.style.transition = "1s";
 
 
-    // const articleOpen = document.querySelector(".article-open");
-    // articleOpen.style.transition = "1s";
-    //articleOpen.style.opacity = "0";
-
     const title = document.createElement('h2');
     title.textContent = data.title;
     article.append(title);
@@ -143,13 +139,13 @@ function articleCreator(data) {
     const firstParagraph = document.createElement('p');
     firstParagraph.textContent = data.firstParagraph;
     firstParagraph.style.opacity = "0";
-    firstParagraph.style.transition = "2s";
+    firstParagraph.style.transition = "4s";
     article.appendChild(firstParagraph);
 
     const secondParagraph = document.createElement('p');
     secondParagraph.textContent = data.secondParagraph;
     secondParagraph.style.opacity = "0";
-    secondParagraph.style.transition = "3s";
+    secondParagraph.style.transition = "4s";
     article.appendChild(secondParagraph);
 
     const thirdParagraph = document.createElement('p');
@@ -162,18 +158,13 @@ function articleCreator(data) {
     buttonPanel.classList.add('button-panel');
     article.appendChild(buttonPanel);
 
-    // const expandButton = document.createElement('span');
-    // expandButton.classList.add('expandButton');
-    // expandButton.textContent = '\u25bc';
-    // buttonPanel.appendChild(expandButton);
 
     const closeButton = document.createElement('span');
     closeButton.classList.add('closeButton', 'expandButton', 'hide-btn');
     closeButton.textContent = '\u25b2';
+
     closeButton.style.transition = "all 650ms";
     closeButton.style.fontSize = "14px";
-
-
     buttonPanel.appendChild(closeButton);
 
     const expandButton = document.createElement('span');
@@ -202,10 +193,16 @@ function articleCreator(data) {
         expandButton.classList.toggle('hide-btn');
         closeButton.classList.toggle('hide-btn');
         article.classList.toggle('article-open');
-        firstParagraph.style.opacity = "1";
-        secondParagraph.style.opacity = "1";
-        thirdParagraph.style.opacity = "1";
-        //firstParagraph.style.transition = "1s";
+        if (article.classList.contains("article-open")) {
+            firstParagraph.style.opacity = "1";
+            secondParagraph.style.opacity = "1";
+            thirdParagraph.style.opacity = "1";
+        } else {
+            firstParagraph.style.opacity = "0";
+            secondParagraph.style.opacity = "0";
+            thirdParagraph.style.opacity = "0";
+        }
+
     })
 
 
