@@ -124,6 +124,12 @@ const data = [{
 function articleCreator(data) {
     const article = document.createElement("div");
     article.classList.add('article');
+    article.style.transition = "1s";
+
+
+    // const articleOpen = document.querySelector(".article-open");
+    // articleOpen.style.transition = "1s";
+    //articleOpen.style.opacity = "0";
 
     const title = document.createElement('h2');
     title.textContent = data.title;
@@ -136,14 +142,20 @@ function articleCreator(data) {
 
     const firstParagraph = document.createElement('p');
     firstParagraph.textContent = data.firstParagraph;
+    firstParagraph.style.opacity = "0";
+    firstParagraph.style.transition = "2s";
     article.appendChild(firstParagraph);
 
     const secondParagraph = document.createElement('p');
     secondParagraph.textContent = data.secondParagraph;
+    secondParagraph.style.opacity = "0";
+    secondParagraph.style.transition = "3s";
     article.appendChild(secondParagraph);
 
     const thirdParagraph = document.createElement('p');
     thirdParagraph.textContent = data.thirdParagraph;
+    thirdParagraph.style.opacity = "0";
+    thirdParagraph.style.transition = "4s";
     article.appendChild(thirdParagraph);
     //---------------------------------------------
     const buttonPanel = document.createElement('div');
@@ -159,16 +171,19 @@ function articleCreator(data) {
     closeButton.classList.add('closeButton', 'expandButton', 'hide-btn');
     closeButton.textContent = '\u25b2';
     closeButton.style.transition = "all 650ms";
-    closeButton.style.transform = "translate(-50%)";
     closeButton.style.fontSize = "14px";
+
+
     buttonPanel.appendChild(closeButton);
 
     const expandButton = document.createElement('span');
     expandButton.classList.add('expandButton');
     expandButton.textContent = '\u25bc';
     expandButton.style.fontSize = "14px";
+
     expandButton.style.transition = "all 650ms";
     buttonPanel.appendChild(expandButton);
+
 
 
     buttonPanel.addEventListener('mouseover', (e) => {
@@ -187,6 +202,10 @@ function articleCreator(data) {
         expandButton.classList.toggle('hide-btn');
         closeButton.classList.toggle('hide-btn');
         article.classList.toggle('article-open');
+        firstParagraph.style.opacity = "1";
+        secondParagraph.style.opacity = "1";
+        thirdParagraph.style.opacity = "1";
+        //firstParagraph.style.transition = "1s";
     })
 
 
@@ -197,18 +216,3 @@ const articles = document.querySelector('.articles');
 const mappedArticles = data.map(elData => {
     articles.appendChild(articleCreator(elData));
 })
-
-// const newArticle = {
-//     title: 'Java',
-//     date: 'Sep 17th, 2019',
-//     firstParagraph: `Java is a general-purpose programming language that is class-based, object-oriented, and designed to have as few implementation dependencies as possible. It is intended to let application developers write once, run anywhere (WORA),[15] meaning that compiled Java code can run on all platforms that support Java without the need for recompilation.[16] Java applications are typically compiled to bytecode that can run on any Java virtual machine (JVM) regardless of the underlying computer architecture. The syntax of Java is similar to C and C++, but it has fewer low-level facilities than either of them. As of 2019, Java was one of the most popular programming languages in use according to GitHub,[17][18] particularly for client-server web applications, with a reported 9 million developers.`,
-
-//     secondParagraph: `Java was originally developed by James Gosling at Sun Microsystems (which has since been acquired by Oracle) and released in 1995 as a core component of Sun Microsystems' Java platform. The original and reference implementation Java compilers, virtual machines, and class libraries were originally released by Sun under proprietary licenses. As of May 2007, in compliance with the specifications of the Java Community Process, Sun had relicensed most of its Java technologies under the GNU General Public License. Meanwhile, others have developed alternative implementations of these Sun technologies, such as the GNU Compiler for Java (bytecode compiler), GNU Classpath (standard libraries), and IcedTea-Web (browser plugin for applets).`,
-
-//     thirdParagraph: `The latest versions are Java 13, released in September 2019, and Java 11, a currently supported long-term support (LTS) version, released on September 25, 2018; Oracle released for the legacy Java 8 LTS the last free public update in January 2019 for commercial use, while it will otherwise still support Java 8 with public updates for personal use up to at least December 2020. Oracle (and others) highly recommend uninstalling older versions of Java because of serious risks due to unresolved security issues.[20] Since Java 9 (and 10 and 12) is no longer supported, Oracle advises its users to immediately transition to the latest version (currently Java 13) or an LTS release.`
-// };
-
-// articles.appendChild(articleCreator(newArticle));
-// data.forEach(elData => {
-//     articles.appendChild(articleCreator(elData));
-// });
